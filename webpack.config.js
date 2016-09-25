@@ -24,15 +24,15 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['babel'],
+      loader: 'babel-loader',
       include: path.join(__dirname, 'src'),
       query: {
-        "presets": [
-          "es2015-webpack",
-          "stage-0",
+        presets: [
+          "es2015",
+          "stage-1",
           "react"
         ],
-        "plugins": [
+        plugins: [
           "react-hot-loader/babel"
         ]
       }

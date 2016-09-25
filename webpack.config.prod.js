@@ -37,11 +37,11 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['babel'],
+      loader: 'babel',
       include: path.join(__dirname, 'src'),
       query: {
-        "presets": [
-          "es2015-webpack",
+        presets: [
+          "es2015",
           "stage-0",
           "react"
         ]
