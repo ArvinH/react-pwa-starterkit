@@ -1,6 +1,7 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import { render } from 'react-dom';
+import { install } from 'offline-plugin/runtime';
 import App from './App';
 import './style.css';
 
@@ -16,12 +17,11 @@ if (module.hot) {
   module.hot.accept('./App', () => {
     render(
       <AppContainer>
-         <App />
+        <App />
       </AppContainer>,
       rootEl
     );
   });
 }
 
-import { install } from 'offline-plugin/runtime';
 install();

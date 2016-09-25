@@ -9,7 +9,7 @@ export default () => (
       About this Application
     </CardText>
     <CardActions border>
-      <Button colored onClick={() => hashHistory.push('/') } >OK</Button>
+      <Button colored onClick={() => hashHistory.push('/')} >OK</Button>
     </CardActions>
   </Card>
 );

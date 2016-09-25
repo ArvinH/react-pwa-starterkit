@@ -6,10 +6,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Layout, Header, Drawer, Navigation, Content } from 'react-mdl';
 
-export default ({ children, route : { title } }) => (
+export default ({ children, route: { title } }) => (
   <Layout fixedHeader>
-    <Header title= { title }/>
-    <Drawer title= { title }>
+    <Header title={title} />
+    <Drawer title={title}>
       <Navigation>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>

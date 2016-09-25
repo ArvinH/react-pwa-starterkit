@@ -11,10 +11,10 @@ function hideDrawer() {
 }
 
 export default () => (
-  <Router history = { hashHistory } onUpdate = { hideDrawer } >
-    <Route path ="/" component= { Layout } title = "PWA">
-      <IndexRoute component = { Home } />
-      <Route path ="about" component= { About } />
+  <Router history={hashHistory} onUpdate={hideDrawer} >
+    <Route path="/" component={Layout} title="PWA">
+      <IndexRoute component={Home} />
+      <Route path="about" component={About} />
     </Route>
   </Router>
 );
