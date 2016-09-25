@@ -1,9 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var OfflinePlugin = require('offline-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index',
@@ -12,27 +12,27 @@ module.exports = {
     filename: 'bundle.[chunkhash].js',
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"], { verbose: false }),
+    new CleanWebpackPlugin(['dist'], { verbose: false }),
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'index.html',
     }),
     new CopyWebpackPlugin([
       { from: 'images/', to: 'images/' },
       { from: 'manifest.json' }]),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
-      debug: false
+      debug: false,
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
+        warnings: false,
       },
-      sourceMap: false
+      sourceMap: false,
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': 'production',
     }),
-    new OfflinePlugin({ excludes: ["images/*.png"] })
+    new OfflinePlugin({ excludes: ['images/*.png'] }),
   ],
   module: {
     loaders: [{
@@ -41,15 +41,15 @@ module.exports = {
       include: path.join(__dirname, 'src'),
       query: {
         presets: [
-          "es2015",
-          "stage-0",
-          "react"
-        ]
-      }
+          'es2015',
+          'stage-0',
+          'react',
+        ],
+      },
     },
     {
       test: /\.css/,
-      loaders: ["style", "css"]
-    }]
-  }
+      loaders: ['style', 'css'],
+    }],
+  },
 };
