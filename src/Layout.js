@@ -11,8 +11,12 @@ export default ({ children, route: { title } }) => (
     <Header title={title} />
     <Drawer title={title}>
       <Navigation>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/">
+          Home
+        </Link>
+        <Link to="/about">
+          About
+        </Link>
       </Navigation>
     </Drawer>
     <Content>{children}</Content>
