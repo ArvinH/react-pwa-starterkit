@@ -19,10 +19,6 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: 'images/', to: 'images/' },
       { from: 'manifest.json' }]),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -42,7 +38,7 @@ module.exports = {
       query: {
         presets: [
           'es2015',
-          'stage-0',
+          'stage-1',
           'react',
         ],
       },

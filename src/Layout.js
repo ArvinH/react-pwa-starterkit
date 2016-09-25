@@ -1,7 +1,4 @@
 // import React from 'react';
-import 'react-mdl/extra/material';
-import 'react-mdl/extra/material.css';
-
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
