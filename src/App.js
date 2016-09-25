@@ -1,20 +1,23 @@
 import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Layout from './Layout';
 import About from './components/About';
 import Home from './components/Home';
 
-function hideDrawer() {
-  document.querySelector('.mdl-layout__obfuscator').classList.remove('is-visible');
-  document.querySelector('.mdl-layout__drawer').classList.remove('is-visible');
-}
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 export default () => (
-  <Router history={hashHistory} onUpdate={hideDrawer} >
-    <Route path="/" component={Layout} title="PWA">
-      <IndexRoute component={Home} />
-      <Route path="about" component={About} />
-    </Route>
-  </Router>
+  <MuiThemeProvider>
+    <Router history={hashHistory} >
+      <Route path="/" component={Layout} title="PWA">
+        <IndexRoute component={Home} />
+        <Route path="about" component={About} />
+      </Route>
+    </Router>
+  </MuiThemeProvider>
 );

@@ -1,15 +1,16 @@
 import React from 'react';
-import { Card, CardTitle, CardText, CardActions, Button } from 'react-mdl';
+import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import { hashHistory } from 'react-router';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default () => (
-  <Card shadow={0} style={{ textAlign: 'center' }}>
+  <Card style={{ textAlign: 'center' }}>
     <CardTitle style={{ margin: 'auto' }}>PWA</CardTitle>
     <CardText>
       About this Application
     </CardText>
-    <CardActions border>
-      <Button colored onClick={() => hashHistory.push('/')} >OK</Button>
+    <CardActions>
+      <RaisedButton onClick={() => hashHistory.push('/')} >OK</RaisedButton>
     </CardActions>
   </Card>
 );
