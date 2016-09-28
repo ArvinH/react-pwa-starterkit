@@ -7,7 +7,7 @@ import './style.css';
 
 (() => {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/youcard-service-worker.js');
+    navigator.serviceWorker.register('./youcard-service-worker.js');
   }
 })();
 
