@@ -20,7 +20,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    //new OfflinePlugin({ excludes: ['images/*.png'] }),
   ],
   module: {
     preLoaders: [

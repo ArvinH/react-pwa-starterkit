@@ -30,11 +30,11 @@ module.exports = {
     }),
     new SWPrecacheWebpackPlugin(
       {
-        cacheId: 'youcard-pwa',
-        filename: 'youcard-service-worker.js',
+        cacheId: 'your-cachedId',
+        filename: 'your-service-worker.js',
         runtimeCaching: [{
           handler: 'cacheFirst',
-          urlPattern: /cardstack_search$/,
+          urlPattern: /^(https:\/\/api\.github\.com\/users\/)/,
         },
         {
           handler: 'cacheFirst',
