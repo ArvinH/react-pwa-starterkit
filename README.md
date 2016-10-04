@@ -1,4 +1,4 @@
-Simple progressive web app starter kit
+Simple progressive web app starter kit with redux-integration 
 
 redux-integration on `redux-integraion` branch
 
