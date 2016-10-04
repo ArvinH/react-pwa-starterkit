@@ -1,6 +1,6 @@
 Simple progressive web app starter kit
 
-redux-integration on `redux-intergraion` branch
+redux-integration on `redux-integraion` branch
 
 Command|Description
 --- | ---
