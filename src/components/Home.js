@@ -1,5 +1,14 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux'
 
-export default () => (
-  <h1>Home Page</h1>
-);
+@connect(
+  state => {{}},
+  dispatch => {{}},
+)
+export default class Home extends Component {
+  render () {
+    return (
+      <h1>Home Page</h1>
+    )
+  }
+}
