@@ -1,3 +1,8 @@
-export default function (state = {}, action) {
-  return {...state}
-}
+import {combineReducers} from 'redux'
+import root from './root'
+
+const reducer = combineReducers({
+  root,
+})
+
+export default reducer

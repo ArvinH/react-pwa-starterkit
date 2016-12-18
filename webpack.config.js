@@ -7,6 +7,7 @@ import plugins from './webpack/plugins.config'
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry:   [
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     'babel-polyfill',
     './src/index'
@@ -15,7 +16,6 @@ module.exports = {
     path:       path.join(__dirname, 'dist'),
     filename:   'bundle.js',
     publicPath: '/',
-
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

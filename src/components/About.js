@@ -4,11 +4,7 @@ import {hashHistory} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import {connect} from 'react-redux'
 
-@connect(
-  state => {{}},
-  dispatch => {{}},
-)
-export default class About extends Component {
+class About extends Component {
   render () {
     return (
       <Card style={{textAlign: 'center'}}>
@@ -23,3 +19,8 @@ export default class About extends Component {
     )
   }
 }
+
+export default connect(
+  state => {{}},
+  dispatch => {{}},
+)(About)
