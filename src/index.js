@@ -7,14 +7,14 @@ import createLogger from 'redux-logger'
 import {applyMiddleware, createStore} from 'redux'
 import {Provider} from 'react-redux'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux'
+import {syncHistoryWithStore} from 'react-router-redux'
 
 import reducers from './redux/reducers'
 
 import Layout from './Layout';
 import About from './containers/About';
 import Home from './containers/Home';
-
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 const rootEl = document.getElementById('root');
 
@@ -24,11 +24,16 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
+const NODE_ENV = process.env.NODE_ENV
+const IS_PROD = NODE_ENV === 'production'
+
 const store = createStore(
   reducers,
-  applyMiddleware(
-    thunkMiddleware,
-    createLogger()
+  composeWithDevTools(
+    applyMiddleware(
+      thunkMiddleware,
+      createLogger()
+    )
   )
 )
 
