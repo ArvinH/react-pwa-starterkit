@@ -1,17 +1,10 @@
 const loaders = [{
   test:    /\.js$/,
-  loader:  'babel-loader',
+  loaders:  [
+    'react-hot',
+    'babel',
+  ],
   exclude: /(node_modules|bower_components)/,
-  query:   {
-    presets: [
-      'es2015',
-      'stage-1',
-      'react',
-    ],
-    plugins: [
-      'react-hot-loader/babel',
-    ],
-  },
 },
   {
     test:    /\.css/,

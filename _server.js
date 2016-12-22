@@ -8,17 +8,24 @@ const PORT = Number(process.env.PORT || 3001)
 
 const app = express();
 
-const config   = require('./webpack.config.js')
-const compiler = webpack(config);
+const NODE_ENV = process.env.NODE_ENV || 'development'
 
-const devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: config.output.publicPath
-})
+if (NODE_ENV !== 'production') {
+  console.log('NOT IN PRODUCTION SO USING WEBPACK HOT RELOAD')
 
-const webpackHotMiddleware = require('webpack-hot-middleware')(compiler)
+  const config   = require('./webpack.config.js')
+  const compiler = webpack(config);
 
-app.use(devMiddleware);
-app.use(webpackHotMiddleware);
+  const devMiddleware = require('webpack-dev-middleware')(compiler, {
+    publicPath: config.output.publicPath
+  })
+
+  const webpackHotMiddleware = require('webpack-hot-middleware')(compiler)
+
+  app.use(devMiddleware);
+  app.use(webpackHotMiddleware);
+}
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/static'))

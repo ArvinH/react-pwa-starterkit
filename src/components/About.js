@@ -21,6 +21,10 @@ class About extends Component {
 }
 
 export default connect(
-  state => {{}},
-  dispatch => {{}},
+  state => {
+    return {}
+  },
+  dispatch => {
+    return {}
+  }
 )(About)

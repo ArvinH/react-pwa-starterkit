@@ -5,12 +5,18 @@ import {connect} from 'react-redux'
 class Home extends Component {
   render () {
     return (
-      <h1>Home Page</h1>
+      <div style={{backgroundColor: 'white'}}>
+        sdfsdf
+      </div>
     )
   }
 }
 
 export default connect(
-  state => {{}},
-  dispatch => {{}},
+  state => {
+    return {}
+  },
+  dispatch => {
+    return {}
+  }
 )(Home)
