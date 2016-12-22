@@ -1,8 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux'
 
-
-class Home extends Component {
+@connect(
+  state => {
+    return {}
+  },
+  dispatch => {
+    return {}
+  }
+)
+export default class Home extends Component {
   render () {
     return (
       <div style={{backgroundColor: 'white'}}>
@@ -12,11 +19,3 @@ class Home extends Component {
   }
 }
 
-export default connect(
-  state => {
-    return {}
-  },
-  dispatch => {
-    return {}
-  }
-)(Home)
