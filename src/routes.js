@@ -2,8 +2,8 @@ import React from 'react';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 import Layout from './Layout';
-import About from './components/About';
-import Home from './components/Home';
+import About from './containers/About';
+import Home from './containers/Home';
 
 
 module.exports = (

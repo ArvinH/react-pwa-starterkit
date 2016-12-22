@@ -1,3 +1,5 @@
+/* @flow */
+
 // import React from 'react';
 import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
@@ -7,18 +9,30 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {withRouter} from 'react-router'
 
+type Props = {
+  title: string,
+  onClick: () => void,
+  children?: any,
+};
+
 @withRouter
 class Layout extends Component {
-  constructor (props) {
-    super(props);
-    this.state        = {
-      open:  false,
-      title: props.title,
-    };
-    this.handleToggle = this.handleToggle.bind(this);
+  state: {
+    open: boolean,
+  };
+
+  static defaultProps = {
+    visited: false
   }
 
-  handleToggle () {
+  constructor (props: Props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+
+  handleToggle = () => {
     this.setState({open: !this.state.open});
   }
 
@@ -27,7 +41,7 @@ class Layout extends Component {
       <MuiThemeProvider>
         <div>
           <AppBar
-            title={this.state.title}
+            title={this.props.title}
             iconElementLeft={
               <RaisedButton
                 label="Toggle Drawer"
@@ -35,7 +49,7 @@ class Layout extends Component {
               />
             }
           />
-          <Drawer title={this.state.title} open={this.state.open}>
+          <Drawer title={this.props.title} open={this.state.open}>
             <MenuItem
               onClick={
                 () => {
@@ -63,12 +77,5 @@ class Layout extends Component {
     );
   }
 }
-
-Layout.propTypes = {
-  children: React.PropTypes.shape({
-    children: React.PropTypes.object,
-  }),
-  title:    React.PropTypes.string,
-};
 
 export default Layout;

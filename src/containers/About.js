@@ -1,3 +1,5 @@
+/* @flow */
+
 import React, {Component, PropTypes} from 'react';
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';

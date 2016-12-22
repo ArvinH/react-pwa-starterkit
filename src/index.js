@@ -12,8 +12,8 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import reducers from './redux/reducers'
 
 import Layout from './Layout';
-import About from './components/About';
-import Home from './components/Home';
+import About from './containers/About';
+import Home from './containers/Home';
 
 
 const rootEl = document.getElementById('root');
