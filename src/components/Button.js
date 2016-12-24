@@ -42,8 +42,6 @@ export default class Button extends Component {
 
     let children = this.props.children
 
-    console.log('children', children)
-
     return (
       <div
         className={className}

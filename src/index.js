@@ -1,20 +1,10 @@
 import React from 'react';
 import {render} from 'react-dom';
-// import {install} from 'offline-plugin/runtime';
+import {install} from 'offline-plugin/runtime';
 import './style.css';
-import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-logger'
-import {applyMiddleware, createStore} from 'redux'
 import {Provider} from 'react-redux'
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux'
-
-import reducers from './redux/reducers'
-
-import Layout from './Layout';
-import About from './containers/About';
-import Home from './containers/Home';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import routes from './routes'
+import {getStore} from './redux/store'
 
 const rootEl = document.getElementById('root');
 
@@ -25,33 +15,18 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 const NODE_ENV = process.env.NODE_ENV
-const IS_PROD = NODE_ENV === 'production'
+const IS_PROD  = NODE_ENV === 'production'
 
-const store = createStore(
-  reducers,
-  composeWithDevTools(
-    applyMiddleware(
-      thunkMiddleware,
-      createLogger()
-    )
-  )
-)
+const PRELOADED_STATE = window.__PRELOADED_STATE__
 
-const history = syncHistoryWithStore(browserHistory, store)
+const store = getStore(PRELOADED_STATE)
 
 render(
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/" component={Layout} title="PWA">
-        <IndexRoute component={Home}/>
-        <Route path="about" component={About}/>
-      </Route>
-    </Router>
+    {routes(store)}
   </Provider>,
   rootEl
 );
-
-// install();
 
 if (module.hot) {
   const replaceRootReducer = () => {
@@ -65,3 +40,5 @@ if (module.hot) {
 
   reducerModules.forEach(path => module.hot.accept(path, replaceRootReducer))
 }
+
+install()

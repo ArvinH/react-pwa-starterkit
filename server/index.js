@@ -1,8 +1,9 @@
 import express from 'express'
-import path from 'path'
 import webpack from 'webpack'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import ServerSideRenderRouter from './routers/ServerSideRenderRouter'
+import favicon from 'serve-favicon'
 
 const PORT = Number(process.env.PORT || 3001)
 
@@ -13,7 +14,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development'
 if (NODE_ENV !== 'production') {
   console.log('NOT IN PRODUCTION SO USING WEBPACK HOT RELOAD')
 
-  const config   = require('./webpack.config.js')
+  const config   = require('./../webpack.config.js')
   const compiler = webpack(config);
 
   const devMiddleware = require('webpack-dev-middleware')(compiler, {
@@ -28,14 +29,11 @@ if (NODE_ENV !== 'production') {
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.static(__dirname + '/static'))
+app.use('/static', express.static(__dirname + '/static'))
 app.use('/dist', express.static(__dirname + '/dist'))
-
 app.use(cors())
-
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
-})
+app.use(favicon(__dirname + '/../static/favicon.ico'));
+app.use(ServerSideRenderRouter)
 
 app.listen(PORT, function (err) {
   if (err) {

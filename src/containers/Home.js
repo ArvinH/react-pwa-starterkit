@@ -16,7 +16,7 @@ export default class Home extends Component {
   render () {
     return (
       <div style={{backgroundColor: 'white'}}>
-        sdfsdf
+        sdfsdf!
 
         <Button
           visited={true}
