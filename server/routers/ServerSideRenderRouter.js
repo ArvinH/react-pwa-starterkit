@@ -68,11 +68,10 @@ router.get('*', (req, res, next) => {
   <meta name="apple-mobile-web-app-title" content="PWA">
 </head>
 <body>
-  <div id="root">${appBody}</div>
+  <div id="root"><div>${appBody}</div></div>
   <script>
       window.__PRELOADED_STATE__ = ${JSON.stringify(state)}
   </script>
-  <script src="/dist/bundle.js"></script>
 </body>
 </html>`
         res.send(html)

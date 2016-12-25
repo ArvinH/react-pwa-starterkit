@@ -1,6 +1,6 @@
 const loaders = [{
   test:    /\.js$/,
-  loaders:  [
+  loaders: [
     'react-hot',
     'babel',
   ],
@@ -45,4 +45,4 @@ const loaders = [{
   }
 ]
 
-export default loaders
+module.exports = loaders

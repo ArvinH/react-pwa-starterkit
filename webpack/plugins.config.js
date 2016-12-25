@@ -4,4 +4,4 @@ const plugins = [
   new OfflinePlugin(),
 ]
 
-export default plugins
+module.exports = plugins

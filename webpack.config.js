@@ -1,8 +1,7 @@
-const path    = require('path');
-const webpack = require('webpack');
-
-import loaders from './webpack/loaders.config'
-import plugins from './webpack/plugins.config'
+const path    = require('path')
+const webpack = require('webpack')
+const loaders = require('./webpack/loaders.config')
+const plugins = require('./webpack/plugins.config')
 
 module.exports = {
   devtool: null,

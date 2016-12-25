@@ -1,11 +1,9 @@
-const path               = require('path');
-const webpack            = require('webpack');
-const CopyWebpackPlugin  = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
-
-import loaders from './webpack/loaders.config'
-import plugins from './webpack/plugins.config'
+const path               = require('path')
+const webpack            = require('webpack')
+const CopyWebpackPlugin  = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const loaders            = require('./webpack/loaders.config')
+const plugins            = require('./webpack/plugins.config')
 
 module.exports = {
   entry:   './src/index',
@@ -16,8 +14,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist'], {verbose: false}),
     new CopyWebpackPlugin([
-      {from: 'images/', to: 'images/'},
-      {from: 'manifest.json'}]),
+      {from: 'static/images/', to: 'images'},
+      {from: 'manifest.json'},
+      {from: 'static/favicon.ico'},
+    ]),
     new webpack.optimize.UglifyJsPlugin({
       compress:  {
         warnings: false,
@@ -27,7 +27,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new OfflinePlugin(),
     ...plugins,
   ],
   module:  {
