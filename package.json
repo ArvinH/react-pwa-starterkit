@@ -2,9 +2,9 @@
   "name": "react-pwa-starterkit",
   "version": "1.0.0",
   "scripts": {
-    "start": "node server.js",
+    "start": "node runServer.js",
     "build": "webpack --config webpack.config.prod.js",
-		"deploy": "git commit -am \"Save local changes\"; git checkout -B gh-pages; git add -f dist; git commit -am \"Rebuild website\"; git filter-branch -f --prune-empty --subdirectory-filter dist; git push -f origin gh-pages; git checkout -"
+    "deploy": "git commit -am \"Save local changes\"; git checkout -B gh-pages; git add -f dist; git commit -am \"Rebuild website\"; git filter-branch -f --prune-empty --subdirectory-filter dist; git push -f origin gh-pages; git checkout -"
   },
   "repository": {
     "type": "git",
@@ -12,9 +12,12 @@
   },
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
     "immutable": "^3.8.1",
     "material-ui": "^0.16.5",
     "offline-plugin": "^3.4.1",
+    "path": "^0.12.7",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
@@ -24,8 +27,8 @@
     "redux-actions": "^0.12.0",
     "redux-immutable": "^3.0.8",
     "redux-thunk": "^2.1.0",
-    "whatwg-fetch": "^1.0.0",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",
@@ -48,6 +51,7 @@
     "redux-logger": "^2.6.1",
     "style-loader": "^0.13.1",
     "sw-precache-webpack-plugin": "^0.5.1",
-    "webpack-dev-server": "^1.16.1"
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.2"
   }
 }
