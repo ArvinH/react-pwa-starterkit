@@ -1,81 +1,70 @@
-/* @flow */
-
 // import React from 'react';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { hashHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {withRouter} from 'react-router'
 
-type Props = {
-  title: string,
-  onClick: () => void,
-  children?: any,
-};
-
-@withRouter
 class Layout extends Component {
-  state: {
-    open: boolean,
-  };
-
-  static defaultProps = {
-    visited: false
-  }
-
-  constructor (props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       open: false,
+      title: props.title,
     };
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
-  handleToggle = () => {
-    this.setState({open: !this.state.open});
+  handleToggle() {
+    this.setState({ open: !this.state.open });
   }
 
-  render () {
+  render() {
     return (
-      <MuiThemeProvider>
-        <div>
-          <AppBar
-            title={this.props.title}
-            iconElementLeft={
-              <RaisedButton
-                label="Toggle Drawer"
-                onTouchTap={this.handleToggle}
-              />
+      <div>
+        <AppBar
+          title={this.state.title}
+          iconElementLeft={
+            <RaisedButton
+              label="Toggle Drawer"
+              onTouchTap={this.handleToggle}
+            />
+          }
+        />
+        <Drawer title={this.state.title} open={this.state.open}>
+          <MenuItem
+            onClick={
+              () => {
+                this.setState({ open: !this.state.open });
+                hashHistory.push('/');
+              }
             }
-          />
-          <Drawer title={this.props.title} open={this.state.open}>
-            <MenuItem
-              onClick={
-                () => {
-                  this.setState({open: !this.state.open});
-                  this.props.router.push('/');
-                }
+          >
+             Home
+          </MenuItem>
+          <MenuItem
+            onClick={
+              () => {
+                this.setState({ open: !this.state.open });
+                hashHistory.push('/about');
               }
-            >
-              Home
-            </MenuItem>
-            <MenuItem
-              onClick={
-                () => {
-                  this.setState({open: !this.state.open});
-                  this.props.router.push('/about');
-                }
-              }
-            >
-              About
-            </MenuItem>
-          </Drawer>
-          <div>{this.props.children}</div>
-        </div>
-      </MuiThemeProvider>
+            }
+          >
+             About
+          </MenuItem>
+        </Drawer>
+        <div>{this.props.children}</div>
+      </div>
     );
   }
 }
+
+Layout.propTypes = {
+  children: React.PropTypes.shape({
+    children: React.PropTypes.object,
+  }),
+  title: React.PropTypes.string,
+};
 
 export default Layout;
