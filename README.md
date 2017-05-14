@@ -1,6 +1,6 @@
 Simple progressive web app starter kit with redux-integration 
 
-redux-integration on `redux-integraion` branch
+react-only on `react-only` branch
 
 Command|Description
 --- | ---
@@ -8,3 +8,8 @@ Command|Description
 *npm run build*|Minified build with offline capabilities
 *npm run deploy*|Deploy your site (under build folder) to github page
 
+### To-Do
+
+- [x] Use our own server.js instead of webpack-dev-server
+- [ ] Server-side rendering
+- [ ] Upgrade to Webpack 2
