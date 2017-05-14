@@ -1,53 +1,31 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path    = require('path')
+const webpack = require('webpack')
+const loaders = require('./webpack/loaders.config')
+const plugins = require('./webpack/plugins.config')
 
 module.exports = {
-  devtool: 'eval',
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
+  devtool: null,
+  entry:   [
+    'webpack-hot-middleware/client',
+    'babel-polyfill',
     './src/index',
   ],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/',
+  output:  {
+    path:       path.join(__dirname, 'dist'),
+    filename:   'bundle.js',
+    publicPath: '/dist',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: 'index.html',
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
     }),
+    ...plugins
   ],
-  module: {
-    preLoaders: [
-      {
-        test: /\.jsx$|\.js$/,
-        loader: 'eslint-loader',
-        include: `${__dirname}/src`,
-        exclude: /bundle\.js$/,
-      },
-    ],
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      include: path.join(__dirname, 'src'),
-      query: {
-        presets: [
-          'es2015',
-          'stage-1',
-          'react',
-        ],
-        plugins: [
-          'react-hot-loader/babel',
-        ],
-      },
-    },
-    {
-      test: /\.css/,
-      loaders: ['style', 'css'],
-    }],
+  module:  {
+    loaders: loaders,
+  },
+  resolve: {
+    extensions: ['', '.js', '.json', '.jsx'],
   },
 };

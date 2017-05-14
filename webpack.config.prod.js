@@ -1,26 +1,25 @@
-const path = require('path');
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const path               = require('path')
+const webpack            = require('webpack')
+const CopyWebpackPlugin  = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const loaders            = require('./webpack/loaders.config')
+const plugins            = require('./webpack/plugins.config')
 
 module.exports = {
-  entry: './src/index',
-  output: {
-    path: path.join(__dirname, 'dist'),
+  entry:   './src/index',
+  output:  {
+    path:     path.join(__dirname, 'dist'),
     filename: 'bundle.[chunkhash].js',
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], { verbose: false }),
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-    }),
+    new CleanWebpackPlugin(['dist'], {verbose: false}),
     new CopyWebpackPlugin([
-      { from: 'images/', to: 'images/' },
-      { from: 'manifest.json' }]),
+      {from: 'static/images/', to: 'images'},
+      {from: 'manifest.json'},
+      {from: 'static/favicon.ico'},
+    ]),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {
+      compress:  {
         warnings: false,
       },
       sourceMap: false,
@@ -28,37 +27,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new SWPrecacheWebpackPlugin(
-      {
-        cacheId: 'youcard-pwa',
-        filename: 'youcard-service-worker.js',
-        runtimeCaching: [{
-          handler: 'cacheFirst',
-          urlPattern: /cardstack_search$/,
-        },
-        {
-          handler: 'cacheFirst',
-          urlPattern: /[.]jpg$/,
-        }],
-      }
-    ),
+    ...plugins,
   ],
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel',
-      include: path.join(__dirname, 'src'),
-      query: {
-        presets: [
-          'es2015',
-          'stage-1',
-          'react',
-        ],
-      },
-    },
-    {
-      test: /\.css/,
-      loaders: ['style', 'css'],
-    }],
+  module:  {
+    loaders: loaders
   },
 };
