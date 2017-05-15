@@ -1,4 +1,4 @@
-import 'whatwg-fetch';
+import fetch from 'isomorphic-fetch';
 import {
   GET_GITHUB_INITIATE,
   GET_GITHUB_SUCCESS,

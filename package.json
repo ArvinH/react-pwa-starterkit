@@ -12,9 +12,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "immutable": "^3.8.1",
+    "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.16.5",
     "offline-plugin": "^3.4.1",
     "path": "^0.12.7",
@@ -27,8 +29,7 @@
     "redux-actions": "^0.12.0",
     "redux-immutable": "^3.0.8",
     "redux-thunk": "^2.1.0",
-    "webpack": "^1.13.2",
-    "whatwg-fetch": "^1.0.0"
+    "webpack": "^1.13.2"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",

@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
-  entry: './src/index',
+  entry: ['babel-polyfill', './src/index'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.[chunkhash].js',
