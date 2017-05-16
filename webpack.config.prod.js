@@ -44,21 +44,24 @@ module.exports = {
     ),
   ],
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       include: path.join(__dirname, 'src'),
-      query: {
+      options: {
         presets: [
           'es2015',
           'stage-1',
           'react',
         ],
       },
-    },
-    {
+    }, {
       test: /\.css/,
-      loaders: ['style', 'css'],
+      use: [{
+        loader: 'style-loader',
+      }, {
+        loader: 'css-loader',
+      }],
     }],
   },
 };

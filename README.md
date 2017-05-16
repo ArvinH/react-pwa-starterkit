@@ -11,5 +11,7 @@ Command|Description
 ### To-Do
 
 - [x] Use our own server.js instead of webpack-dev-server
+- [x] Upgrade to Webpack 2
 - [ ] Server-side rendering
-- [ ] Upgrade to Webpack 2
+- [ ] Tree shaking
+- [ ] Fix webpack warning

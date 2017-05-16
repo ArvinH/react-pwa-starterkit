@@ -22,32 +22,37 @@ module.exports = {
     }),
   ],
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx$|\.js$/,
+        enforce: 'pre',
         loader: 'eslint-loader',
         include: `${__dirname}/src`,
         exclude: /bundle\.js$/,
       },
-    ],
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      include: path.join(__dirname, 'src'),
-      query: {
-        presets: [
-          'es2015',
-          'stage-1',
-          'react',
-        ],
-        plugins: [
-          'react-hot-loader/babel',
-        ],
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: path.join(__dirname, 'src'),
+        options: {
+          presets: [
+            'es2015',
+            'stage-1',
+            'react',
+          ],
+          plugins: [
+            'react-hot-loader/babel',
+          ],
+        },
       },
-    },
-    {
-      test: /\.css/,
-      loaders: ['style', 'css'],
-    }],
+      {
+        test: /\.css/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+        }],
+      },
+    ],
   },
 };
