@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const config = require('./webpack.config');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+// const handleServerRender = require('./server/handleServerRender');
 
 const app = express();
 const compiler = webpack(config);
@@ -19,11 +20,13 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'statics')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+// app.use(handleServerRender);
 
 app.listen(3000, 'localhost', (err) => {
   if (err) {

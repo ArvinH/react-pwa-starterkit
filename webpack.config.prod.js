@@ -17,7 +17,7 @@ module.exports = {
       template: './src/index.html',
     }),
     new CopyWebpackPlugin([
-      { from: 'images/', to: 'images/' },
+      { from: 'statics/images/', to: 'statics/images/' },
       { from: 'manifest.json' }]),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -47,7 +47,6 @@ module.exports = {
     rules: [{
       test: /\.js$/,
       loader: 'babel-loader',
-      include: path.join(__dirname, 'src'),
       options: {
         presets: [
           'es2015',
