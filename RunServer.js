@@ -8,4 +8,6 @@ require('babel-core/register')({
 
 require('babel-polyfill');
 
+delete process.env.BROWSER;
+
 module.exports = require('./server');

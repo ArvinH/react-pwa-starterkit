@@ -20,6 +20,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        BROWSER: JSON.stringify(true),
+      },
+    }),
   ],
   module: {
     rules: [
@@ -27,13 +32,16 @@ module.exports = {
         test: /\.jsx$|\.js$/,
         enforce: 'pre',
         loader: 'eslint-loader',
-        include: `${__dirname}/src`,
         exclude: /bundle\.js$/,
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: path.join(__dirname, 'src'),
+        exclude: ['node_modules'],
         options: {
           presets: [
             'es2015',
@@ -44,14 +52,6 @@ module.exports = {
             'react-hot-loader/babel',
           ],
         },
-      },
-      {
-        test: /\.css/,
-        use: [{
-          loader: 'style-loader',
-        }, {
-          loader: 'css-loader',
-        }],
       },
     ],
   },
