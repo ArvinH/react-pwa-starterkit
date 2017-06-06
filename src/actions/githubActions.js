@@ -11,9 +11,8 @@ import {
   hideSpinner,
 } from './uiActions';
 
-export const getGithub = (userId = 'torvalds') => {
-  console.log('github action');
-  return (dispatch) => {
+export const getGithub = (userId = 'torvalds') => (
+  (dispatch) => {
     dispatch({ type: GET_GITHUB_INITIATE });
     dispatch(showSpinner());
     fetch(`https://api.github.com/users/${userId}`)
@@ -23,7 +22,6 @@ export const getGithub = (userId = 'torvalds') => {
         dispatch(hideSpinner());
       })
       .catch(() => dispatch({ type: GET_GITHUB_FAIL }));
-  };
-};
+  });
 
 export const changeUserId = text => ({ type: CHAGE_USER_ID, payload: { userId: text } });

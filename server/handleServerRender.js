@@ -1,8 +1,8 @@
-const createStore = require('redux').createStore;
-const Provider = require('redux').Provider;
-const appReducers = require('../src/reducers');
-const HomePageContainer = require('../src/containers/HomePageContainer');
-const renderToString = require('react-dom/server').renderToString;
+import React from 'react';
+import { Provider } from 'react-redux';
+import { renderToString } from 'react-dom/server';
+import store from '../src/store';
+import HomePageContainer from '../src/containers/HomePageContainer';
 
 function renderFullPage(html, preloadedState) {
   return `
@@ -23,9 +23,6 @@ function renderFullPage(html, preloadedState) {
 }
 
 function handleRender(req, res) {
-  // Create a new Redux store instance
-  const store = createStore(appReducers);
-
   // Render the component to a string
   const html = renderToString(
     <Provider store={store}>
