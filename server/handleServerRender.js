@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from '../src/store';
 import HomePageContainer from '../src/containers/HomePageContainer';
 
@@ -26,7 +27,9 @@ function handleRender(req, res) {
   // Render the component to a string
   const html = renderToString(
     <Provider store={store}>
-      <HomePageContainer />
+      <MuiThemeProvider>
+        <HomePageContainer />
+      </MuiThemeProvider>
     </Provider>
   );
 

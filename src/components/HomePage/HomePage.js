@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 if (process.env.BROWSER) {
-  require('./HomePage.css');
+  require('./HomePage.css'); // eslint-disable-line global-require
 }
 const HomePage = ({
   userId,
