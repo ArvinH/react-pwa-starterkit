@@ -12,6 +12,6 @@ Command|Description
 
 - [x] Use our own server.js instead of webpack-dev-server
 - [x] Upgrade to Webpack 2
-- [ ] Server-side rendering
+- [x] Server-side rendering (only index route)
 - [ ] Tree shaking
-- [ ] Fix webpack warning
+- [x] Fix webpack warning
