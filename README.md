@@ -16,3 +16,4 @@ Command|Description
 - [x] Fix webpack warning
 - [x] Redux devtool integration
 - [ ] Fix CSS SSR issue
+- [ ] Prod version
