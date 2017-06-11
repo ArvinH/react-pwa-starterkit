@@ -14,4 +14,5 @@ Command|Description
 - [x] Upgrade to Webpack 2
 - [x] Server-side rendering (only index route)
 - [x] Fix webpack warning
-- [ ] Redux devtool integration
+- [x] Redux devtool integration
+- [ ] Fix CSS SSR issue
