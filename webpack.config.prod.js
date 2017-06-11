@@ -10,6 +10,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.[chunkhash].js',
+    publicPath: '/statics',
   },
   plugins: [
     new CleanWebpackPlugin(['dist'], { verbose: false }),
