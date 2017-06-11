@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -32,8 +33,8 @@ const GithubBox = props => (
 );
 
 GithubBox.propTypes = {
-  data: React.PropTypes.Object,
-  userId: React.PropTypes.string,
+  data: PropTypes.object,
+  userId: PropTypes.string,
 };
 
 export default GithubBox;

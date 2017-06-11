@@ -13,5 +13,5 @@ Command|Description
 - [x] Use our own server.js instead of webpack-dev-server
 - [x] Upgrade to Webpack 2
 - [x] Server-side rendering (only index route)
-- [ ] Tree shaking
 - [x] Fix webpack warning
+- [ ] Redux devtool integration

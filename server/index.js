@@ -23,10 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'statics')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  handleServerRender.handleRender(req, res);
 });
 
-app.use(handleServerRender.handleRender);
 
 app.listen(3000, 'localhost', (err) => {
   if (err) {

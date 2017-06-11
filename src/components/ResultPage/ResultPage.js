@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import GithubBox from '../../components/GithubBox';
 
 const ResultPage = props => (
@@ -8,8 +9,8 @@ const ResultPage = props => (
 );
 
 ResultPage.propTypes = {
-  data: React.PropTypes.string,
-  location: React.PropTypes.Object,
+  data: PropTypes.string,
+  location: PropTypes.object,
 };
 
 export default ResultPage;

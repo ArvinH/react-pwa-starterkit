@@ -10,7 +10,7 @@ const githubReducers = handleActions({
   CHAGE_USER_ID: (state, { payload }) => (
     state.merge({
       userId:
-      payload.userId,
+      payload.userId || 'arvinh',
     })
   ),
 }, GithubState);

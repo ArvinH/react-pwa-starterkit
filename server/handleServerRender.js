@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from '../src/store';
 import HomePageContainer from '../src/containers/HomePageContainer';
+import Main from '../src/components/Main';
 
 function renderFullPage(html, preloadedState) {
   return `
@@ -17,7 +18,7 @@ function renderFullPage(html, preloadedState) {
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="./bundle.js"></script>
       </body>
     </html>
     `;
@@ -28,7 +29,9 @@ function handleRender(req, res) {
   const html = renderToString(
     <Provider store={store}>
       <MuiThemeProvider>
-        <HomePageContainer />
+        <Main>
+          <HomePageContainer />
+        </Main>
       </MuiThemeProvider>
     </Provider>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 
 const Main = props => (
@@ -14,7 +15,7 @@ const Main = props => (
 );
 
 Main.propTypes = {
-  children: React.PropTypes.Object,
+  children: PropTypes.object,
 };
 
 export default Main;

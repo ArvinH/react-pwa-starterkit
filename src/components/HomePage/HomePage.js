@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
@@ -29,9 +30,9 @@ const HomePage = ({
 );
 
 HomePage.propTypes = {
-  onSubmitUserId: React.PropTypes.func,
-  onChangeUserId: React.PropTypes.func,
-  userId: React.PropTypes.string,
+  onSubmitUserId: PropTypes.func,
+  onChangeUserId: PropTypes.func,
+  userId: PropTypes.string,
 };
 
 export default HomePage;
