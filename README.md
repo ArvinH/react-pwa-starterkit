@@ -17,3 +17,4 @@ Command|Description
 - [x] Redux devtool integration
 - [ ] Fix CSS SSR issue
 - [ ] Prod version
+- [ ] Replace sw-tool with workbox
